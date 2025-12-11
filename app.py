@@ -1,5 +1,7 @@
 """Streamlit app for TCO comparison between AWS and Orq."""
 
+import hashlib
+
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -26,6 +28,23 @@ st.set_page_config(
     page_icon="📊",
     layout="wide",
 )
+
+# Simple authentication
+PASSWORD_HASH = "bd458180151d80675c113f3c9309b37901dde974"
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    st.title("Login")
+    password = st.text_input("Password", type="password")
+    if st.button("Login"):
+        if hashlib.sha1(password.encode()).hexdigest() == PASSWORD_HASH:
+            st.session_state.authenticated = True
+            st.rerun()
+        else:
+            st.error("Incorrect password")
+    st.stop()
 
 st.title("TCO Comparison: AWS vs Orq")
 st.markdown("Compare total cost of ownership for agent-based AI systems")
