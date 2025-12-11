@@ -142,14 +142,13 @@ def calculate_orq_costs(
     Returns:
         CostBreakdown with all cost components in EUR
     """
-    cpu_hours, gb_hours = calculate_runtime_hours(runtime)
     gb_per_trace = scenario.gb_per_trace
 
     # Base subscription
     base_eur = pricing.base_subscription
 
-    # Runtime cost (default 0, placeholder for future)
-    runtime_eur = traces * (cpu_hours * pricing.cpu_hour + gb_hours * pricing.gb_hour)
+    # Runtime cost (per second pricing)
+    runtime_eur = traces * runtime.session_duration_seconds * pricing.cost_per_second
 
     # Gateway cost (included in Orq)
     gateway_eur = 0.0

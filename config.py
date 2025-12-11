@@ -35,14 +35,13 @@ class AWSPricing:
 class OrqPricing:
     """Orq pricing parameters (all in EUR)."""
 
-    base_subscription: float = 750.0
+    base_subscription: float = 250.0
     included_traces: int = 1_000_000
     included_storage_gb: float = 50.0
     traces_overage_per_k: float = 1.50
     storage_per_gb: float = 3.0
-    # Runtime costs (default to 0, placeholder for future)
-    cpu_hour: float = 0.0
-    gb_hour: float = 0.0
+    # Runtime costs
+    cost_per_second: float = 0.0
 
 
 @dataclass
