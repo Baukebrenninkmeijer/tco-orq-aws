@@ -70,9 +70,9 @@ class ScenarioParams:
     eval_output_tokens: int = 300
 
     # Memory parameters (per trace)
-    short_term_memory_events_per_trace: int = 10  # Events created per trace
+    short_term_memory_events_per_trace: int = 1  # Events created per trace
     long_term_memories_per_trace: float = 0.5  # Long-term memories stored per trace
-    memory_retrievals_per_trace: int = 5  # Memory retrievals per trace
+    memory_retrievals_per_trace: int = 2  # Memory retrievals per trace
 
     # Gateway parameters
     tools_indexed: int = 10  # Number of tools indexed in Gateway
@@ -96,10 +96,10 @@ PRESETS: dict[str, ScenarioParams] = {
         builtin_evals_count=0,
         custom_evals_count=5,
         eval_output_tokens=300,
-        short_term_memory_events_per_trace=10,
+        short_term_memory_events_per_trace=4,
         long_term_memories_per_trace=0.5,
-        memory_retrievals_per_trace=5,
-        tools_indexed=10,
+        memory_retrievals_per_trace=4,
+        tools_indexed=30,
     ),
     "Support Bot Small": ScenarioParams(
         name="Support Bot Small",
@@ -112,10 +112,10 @@ PRESETS: dict[str, ScenarioParams] = {
         builtin_evals_count=0,
         custom_evals_count=5,
         eval_output_tokens=300,
-        short_term_memory_events_per_trace=5,
+        short_term_memory_events_per_trace=2,
         long_term_memories_per_trace=0.2,
-        memory_retrievals_per_trace=3,
-        tools_indexed=5,
+        memory_retrievals_per_trace=1,
+        tools_indexed=10,
     ),
     "Multi-agent": ScenarioParams(
         name="Multi-agent",
@@ -128,10 +128,10 @@ PRESETS: dict[str, ScenarioParams] = {
         builtin_evals_count=0,
         custom_evals_count=5,
         eval_output_tokens=300,
-        short_term_memory_events_per_trace=20,
+        short_term_memory_events_per_trace=3,
         long_term_memories_per_trace=1.0,
-        memory_retrievals_per_trace=10,
-        tools_indexed=20,
+        memory_retrievals_per_trace=6,
+        tools_indexed=100,
     ),
     "Custom": ScenarioParams(name="Custom"),
 }
