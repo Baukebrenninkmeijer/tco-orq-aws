@@ -126,12 +126,9 @@ with st.sidebar:
             "Storage (per GB)", value=3.0, format="%.2f", key="orq_storage_price"
         )
         st.markdown("---")
-        st.markdown("*Runtime (placeholder for future)*")
-        orq_cpu_hour = st.number_input(
-            "CPU Hour", value=0.0, format="%.4f", key="orq_cpu"
-        )
-        orq_gb_hour = st.number_input(
-            "GB Hour", value=0.0, format="%.5f", key="orq_gb"
+        st.markdown("*Runtime*")
+        orq_cost_per_second = st.number_input(
+            "Cost per Second", value=0.0, format="%.6f", key="orq_cost_per_second"
         )
 
     orq_pricing = OrqPricing(
@@ -140,8 +137,7 @@ with st.sidebar:
         included_storage_gb=orq_included_storage,
         traces_overage_per_k=orq_trace_overage,
         storage_per_gb=orq_storage_price,
-        cpu_hour=orq_cpu_hour,
-        gb_hour=orq_gb_hour,
+        cost_per_second=orq_cost_per_second,
     )
 
     # Currency Conversion
